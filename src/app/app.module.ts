@@ -7,6 +7,7 @@ import { DetachComponent } from './components/detach/detach.component';
 import { ReattachComponent } from './components/reattach/reattach.component';
 import { NgZoneComponent } from './components/ng-zone/ng-zone.component';
 import { AsyncPipeComponent } from './components/async-pipe/async-pipe.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AsyncPipeComponent } from './components/async-pipe/async-pipe.component
     AsyncPipeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

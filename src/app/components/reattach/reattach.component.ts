@@ -22,18 +22,18 @@ export class BitcoinPriceProvider {
   selector: 'app-reattach',
   templateUrl: './reattach.component.html',
   styleUrls: ['./reattach.component.scss'],
-  inputs: ['life'],
+  inputs: ['enVivo'],
 })
 export class ReattachComponent implements OnInit {
-  showLive: boolean = true;
+  mostrarEnVivo: boolean = true;
 
   constructor(
-    public bitcoinPriceProvider: BitcoinPriceProvider,
+    public bitcoinPrice: BitcoinPriceProvider,
     private ref: ChangeDetectorRef
   ) {}
 
-  set showLiveValue(value: boolean) {
-    this.showLive = value;
+  set enVivo(value: boolean) {
+    this.mostrarEnVivo = value;
     if (value) {
       this.ref.reattach();
     } else {
