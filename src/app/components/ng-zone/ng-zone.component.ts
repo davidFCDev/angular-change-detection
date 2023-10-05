@@ -6,7 +6,6 @@ import { Component, OnInit, NgZone } from '@angular/core';
   styleUrls: ['./ng-zone.component.scss'],
 })
 export class NgZoneComponent implements OnInit {
-
   progreso: number = 0;
   texto: string = '';
 
@@ -21,8 +20,25 @@ export class NgZoneComponent implements OnInit {
     if (this.progreso < 100) {
       window.setTimeout(() => {
         this.incrementarProgreso(terminar);
-      }
-      , 10);
+      }, 10);
+    } else {
+      terminar();
     }
+  }
+
+  aumentarDentroNgZone() {
+    this.texto = 'Dentro';
+    this.progreso = 0;
+    this.incrementarProgreso(() => console.log(`${this.texto} terminado`));
+  }
+
+  aumentarFueraNgZone() {
+    this.texto = 'Fuera';
+    this.progreso = 0;
+    this._ngZone.runOutsideAngular(() => {
+      this.incrementarProgreso(() => {
+        this._ngZone.run(() => console.log(`${this.texto} terminado`));
+      });
+    });
   }
 }
