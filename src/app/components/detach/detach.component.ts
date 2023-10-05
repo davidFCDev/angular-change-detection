@@ -1,21 +1,23 @@
-import { Component, OnInit, ChangeDetectorRef, Injectable } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectorRef,
+  Injectable,
+} from '@angular/core';
 import * as Mock from 'mockjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataListProvider {
-
   get data() {
-    return Mock.mock({
-      'list|10': [{
-        'id|+1': 1,
-        'name': '@cname',
-        'age|20-30': 1,
-        'address': '@county(true)',
-        'checked': false
-      }]
-    }).list;
+    const RandomName = Mock.Random;
+    return [
+      RandomName.first(),
+      RandomName.first(),
+      RandomName.first(),
+      RandomName.first(),
+    ];
   }
 }
 
@@ -25,14 +27,15 @@ export class DataListProvider {
   styleUrls: ['./detach.component.scss'],
 })
 export class DetachComponent implements OnInit {
-
-
-
-  constructor() { }
+  constructor(
+    private ref: ChangeDetectorRef,
+    public dataListProvider: DataListProvider
+  ) {}
 
   ngOnInit(): void {
+    this.ref.detach();
+    setInterval(() => {
+      this.ref.detectChanges();
+    }, 3000);
   }
-
 }
-
-
