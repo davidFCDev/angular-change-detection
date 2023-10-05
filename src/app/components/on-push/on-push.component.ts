@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-on-push',
   templateUrl: './on-push.component.html',
   styleUrls: ['./on-push.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OnPushComponent implements OnInit {
-
   /**
    * @description
    * Valor que se va a incrementar cada segundo en archivo TS
