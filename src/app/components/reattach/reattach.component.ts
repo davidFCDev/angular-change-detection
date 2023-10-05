@@ -29,15 +29,15 @@ export class ReattachComponent implements OnInit {
 
   constructor(
     public bitcoinPrice: BitcoinPriceProvider,
-    private ref: ChangeDetectorRef
+    private _ref: ChangeDetectorRef
   ) {}
 
   set enVivo(value: boolean) {
     this.mostrarEnVivo = value;
     if (value) {
-      this.ref.reattach();
+      this._ref.reattach();
     } else {
-      this.ref.detach();
+      this._ref.detach();
     }
   }
 
