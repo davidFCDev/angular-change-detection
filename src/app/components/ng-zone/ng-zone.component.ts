@@ -14,10 +14,9 @@ export class NgZoneComponent implements OnInit {
   ngOnInit(): void {}
 
   incrementarProgreso(terminar: () => void) {
-    this.progreso += 1;
-    console.log('Progreso', this.progreso);
-
     if (this.progreso < 100) {
+      this.progreso += 1;
+      console.log('Progreso', this.progreso);
       window.setTimeout(() => {
         this.incrementarProgreso(terminar);
       }, 10);
