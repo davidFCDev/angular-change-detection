@@ -1,1 +1,6 @@
-<p>async-pipe works!</p>
+<div>
+  <h1>Ejemplo de uso de Async Pipe</h1>
+  <div *ngFor="let item of items$ | async">
+    {{ item.numero }}
+  </div>
+</div>
