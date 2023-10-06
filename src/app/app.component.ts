@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -9,4 +10,7 @@ export class AppComponent {
   title = 'ngChangeDetection';
 
   live: boolean = true;
+
+  items = [{}]
+  items$ = new BehaviorSubject(this.items);
 }
